@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Blog - Astuces & Conseils</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .blog-container {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #3d0066;
+      color: white;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .article {
+      margin-bottom: 40px;
+      background-color: #5a2393;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00000080;
+    }
+
+    .article h2 {
+      color: #d9b3ff;
+      margin-top: 0;
+    }
+
+    .article p {
+      line-height: 1.6;
+      margin: 15px 0;
+    }
+
+    .article a {
+      color: #b366ff;
+      text-decoration: underline;
+      transition: color 0.3s;
+    }
+
+    .article a:hover {
+      color: #d9b3ff;
+    }
+
+    .add-section {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .add-section input,
+    .add-section textarea {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      background-color: #5a2393;
+      color: white;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .add-section button {
+      padding: 10px 20px;
+      background-color: #b366ff;
+      border: none;
+      border-radius: 5px;
+      color: #2c003e;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .add-section button:hover {
+      background-color: #d9b3ff;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="citation.html">Citations</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="blog-container">
+  <h1>Mon Blog - Astuces & Conseils</h1>
+  <p>Bienvenue sur mon espace blog où je partage mes petites astuces et conseils pour progresser en développement web et technologies.</p>
+
+  <div class="article">
+    <h2>5 astuces simples pour progresser en HTML & CSS</h2>
+    <p>Que vous soyez débutant ou intermédiaire, voici quelques bonnes pratiques à adopter :<br>
+    - Structurez bien vos pages avec des balises sémantiques.<br>
+    - Utilisez les classes CSS de façon logique.<br>
+    - Pensez au responsive dès le départ.<br>
+    - Privilégiez des couleurs et typographies harmonieuses.<br>
+    - Ne négligez jamais l'accessibilité.
+    </p>
+  </div>
+
+  <div class="article">
+    <h2>Pourquoi apprendre JavaScript est indispensable</h2>
+    <p>JavaScript permet d'ajouter de l'interactivité à vos sites web : boutons dynamiques, formulaires intelligents, animations... C'est aussi la porte d'entrée vers des frameworks modernes comme React ou Vue.js.</p>
+  </div>
+
+  <div class="article">
+    <h2>Mes outils préférés pour débuter facilement</h2>
+    <p>Voici quelques outils gratuits qui m'aident au quotidien :<br>
+    - Visual Studio Code (éditeur de code)<br>
+    - GitHub (versionnage et partage de projets)<br>
+    - Photoshop (design rapide)<br>
+    - Remove Background (enlever les arrière-plans)
+    </p>
+  </div>
+
+  <div class="add-section">
+    <input type="text" id="titre" placeholder="Titre de l'article">
+    <textarea id="contenu" rows="4" placeholder="Contenu de l'article"></textarea>
+    <button onclick="ajouterArticle()">Ajouter</button>
+  </div>
+
+</section>
+
+<footer>
+  <p>&copy; 2025 - Mon Portfolio</p>
+</footer>
+
+<script>
+  function ajouterArticle() {
+    const titre = document.getElementById('titre').value.trim();
+    const contenu = document.getElementById('contenu').value.trim();
+
+    if (titre && contenu) {
+      const article = document.createElement('div');
+      article.className = 'article';
+      article.innerHTML = `<h2>${titre}</h2><p>${contenu}</p>`;
+
+      document.querySelector('.add-section').before(article);
+
+      document.getElementById('titre').value = '';
+      document.getElementById('contenu').value = '';
+    } else {
+      alert('Veuillez remplir le titre et le contenu.');
+    }
+  }
+</script>
+
+</body>
+</html>

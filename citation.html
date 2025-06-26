@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citations Motivation Technologie</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .citation-container {
+      max-width: 800px;
+      margin: 50px auto;
+      background-color: #3d0066;
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    .citation {
+      font-size: 1.4rem;
+      margin: 20px 0;
+      background-color: #5a2393;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00000080;
+    }
+
+    h1 {
+      color: #d9b3ff;
+    }
+
+    .add-section {
+      margin-top: 30px;
+    }
+
+    .add-section input {
+      padding: 10px;
+      width: 70%;
+      border: none;
+      border-radius: 5px;
+      margin-right: 10px;
+      background-color: #5a2393;
+      color: white;
+    }
+
+    .add-section button {
+      padding: 10px 20px;
+      background-color: #b366ff;
+      border: none;
+      border-radius: 5px;
+      color: #2c003e;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .add-section button:hover {
+      background-color: #d9b3ff;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cv.html">CV</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="citation.html" class="active">Citations</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="citation-container">
+  <h1>Citations Inspirantes - Technologie & Persévérance</h1>
+
+  <div class="citation">"Ce n'est pas parce que c'est difficile que nous n'osons pas, c'est parce que nous n'osons pas que c'est difficile." – Sénèque</div>
+  <div class="citation">"La technologie ne remplace jamais le travail acharné, elle le complète."</div>
+  <div class="citation">"Tout semble impossible jusqu'à ce que ce soit fait." – Nelson Mandela</div>
+  <div class="citation">"Si vous tombez sept fois, relevez-vous huit." – Proverbe japonais</div>
+  <div class="citation">"Les plus grands développeurs ont été des débutants un jour. Continuez d'apprendre."</div>
+  <div class="citation">"N'abandonnez jamais. Le code qui ne fonctionne pas aujourd'hui vous apprendra quelque chose demain."</div>
+
+  <div class="add-section">
+    <input type="text" id="newCitation" placeholder="Écris ta citation ici...">
+    <button onclick="ajouterCitation()">Ajouter</button>
+  </div>
+
+</section>
+
+<footer>
+  <p>&copy; 2025 - Mon Portfolio</p>
+</footer>
+
+<script>
+  function ajouterCitation() {
+    const input = document.getElementById('newCitation');
+    const text = input.value.trim();
+    if (text) {
+      const div = document.createElement('div');
+      div.className = 'citation';
+      div.textContent = text;
+      document.querySelector('.citation-container').insertBefore(div, document.querySelector('.add-section'));
+      input.value = '';
+    } else {
+      alert('Veuillez entrer une citation.');
+    }
+  }
+</script>
+
+</body>
+</html>
