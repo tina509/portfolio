@@ -24,7 +24,33 @@
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px #00000080;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
+
+    .citation span {
+      flex: 1;
+      text-align: left;
+    }
+
+    .supprimer-btn {
+  margin-left: 15px;
+  padding: 5px 10px;
+  background-color: #b366ff;
+  color: #2c003e;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.supprimer-btn:hover {
+  background-color: #9933ff;
+}
+
 
     h1 {
       color: #d9b3ff;
@@ -53,10 +79,6 @@
       cursor: pointer;
       font-weight: bold;
     }
-
-    .add-section button:hover {
-      background-color: #d9b3ff;
-    }
   </style>
 </head>
 <body>
@@ -67,7 +89,6 @@
       <li><a href="index.html">Accueil</a></li>
       <li><a href="projets.html">Projets</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="cv.html">CV</a></li>
       <li><a href="blog.html">Blog</a></li>
       <li><a href="citation.html" class="active">Citations</a></li>
     </ul>
@@ -77,12 +98,30 @@
 <section class="citation-container">
   <h1>Citations Inspirantes - Technologie & Persévérance</h1>
 
-  <div class="citation">"Ce n'est pas parce que c'est difficile que nous n'osons pas, c'est parce que nous n'osons pas que c'est difficile." – Sénèque</div>
-  <div class="citation">"La technologie ne remplace jamais le travail acharné, elle le complète."</div>
-  <div class="citation">"Tout semble impossible jusqu'à ce que ce soit fait." – Nelson Mandela</div>
-  <div class="citation">"Si vous tombez sept fois, relevez-vous huit." – Proverbe japonais</div>
-  <div class="citation">"Les plus grands développeurs ont été des débutants un jour. Continuez d'apprendre."</div>
-  <div class="citation">"N'abandonnez jamais. Le code qui ne fonctionne pas aujourd'hui vous apprendra quelque chose demain."</div>
+  <div class="citation">
+    <span>"Ce n'est pas parce que c'est difficile que nous n'osons pas, c'est parce que nous n'osons pas que c'est difficile." – Sénèque</span>
+    <button class="supprimer-btn" onclick="supprimer(this)">Supprimer</button>
+  </div>
+  <div class="citation">
+    <span>"La technologie ne remplace jamais le travail acharné, elle le complète."</span>
+    <button class="supprimer-btn" onclick="supprimer(this)">Supprimer</button>
+  </div>
+  <div class="citation">
+    <span>"Tout semble impossible jusqu'à ce que ce soit fait." – Nelson Mandela</span>
+    <button class="supprimer-btn" onclick="supprimer(this)">Supprimer</button>
+  </div>
+  <div class="citation">
+    <span>"Si vous tombez sept fois, relevez-vous huit." – Proverbe japonais</span>
+    <button class="supprimer-btn" onclick="supprimer(this)">Supprimer</button>
+  </div>
+  <div class="citation">
+    <span>"Les plus grands développeurs ont été des débutants un jour. Continuez d'apprendre."</span>
+    <button class="supprimer-btn" onclick="supprimer(this)">Supprimer</button>
+  </div>
+  <div class="citation">
+    <span>"N'abandonnez jamais. Le code qui ne fonctionne pas aujourd'hui vous apprendra quelque chose demain."</span>
+    <button class="supprimer-btn" onclick="supprimer(this)">Supprimer</button>
+  </div>
 
   <div class="add-section">
     <input type="text" id="newCitation" placeholder="Écris ta citation ici...">
@@ -96,13 +135,30 @@
 </footer>
 
 <script>
+  function supprimer(button) {
+    button.parentElement.remove();
+  }
+
   function ajouterCitation() {
     const input = document.getElementById('newCitation');
     const text = input.value.trim();
     if (text) {
       const div = document.createElement('div');
       div.className = 'citation';
-      div.textContent = text;
+
+      const spanTexte = document.createElement('span');
+      spanTexte.textContent = text;
+
+      const btnSupprimer = document.createElement('button');
+      btnSupprimer.textContent = 'Supprimer';
+      btnSupprimer.className = 'supprimer-btn';
+      btnSupprimer.onclick = function () {
+        div.remove();
+      };
+
+      div.appendChild(spanTexte);
+      div.appendChild(btnSupprimer);
+
       document.querySelector('.citation-container').insertBefore(div, document.querySelector('.add-section'));
       input.value = '';
     } else {

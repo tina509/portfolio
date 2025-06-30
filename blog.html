@@ -22,6 +22,7 @@
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px #00000080;
+      position: relative;
     }
 
     .article h2 {
@@ -42,6 +43,25 @@
 
     .article a:hover {
       color: #d9b3ff;
+    }
+
+    .supprimer-btn {
+      padding: 5px 10px;
+      background-color: #b366ff;
+      color: #2c003e;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: bold;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      transition: background-color 0.3s;
+    }
+
+    .supprimer-btn:hover {
+      background-color: #9933ff;
     }
 
     .add-section {
@@ -105,11 +125,13 @@
     - Privilégiez des couleurs et typographies harmonieuses.<br>
     - Ne négligez jamais l'accessibilité.
     </p>
+    <button class="supprimer-btn" onclick="supprimer(this)">Supprimer</button>
   </div>
 
   <div class="article">
     <h2>Pourquoi apprendre JavaScript est indispensable</h2>
     <p>JavaScript permet d'ajouter de l'interactivité à vos sites web : boutons dynamiques, formulaires intelligents, animations... C'est aussi la porte d'entrée vers des frameworks modernes comme React ou Vue.js.</p>
+    <button class="supprimer-btn" onclick="supprimer(this)">Supprimer</button>
   </div>
 
   <div class="article">
@@ -120,6 +142,7 @@
     - Photoshop (design rapide)<br>
     - Remove Background (enlever les arrière-plans)
     </p>
+    <button class="supprimer-btn" onclick="supprimer(this)">Supprimer</button>
   </div>
 
   <div class="add-section">
@@ -135,6 +158,10 @@
 </footer>
 
 <script>
+  function supprimer(button) {
+    button.parentElement.remove();
+  }
+
   function ajouterArticle() {
     const titre = document.getElementById('titre').value.trim();
     const contenu = document.getElementById('contenu').value.trim();
@@ -143,6 +170,15 @@
       const article = document.createElement('div');
       article.className = 'article';
       article.innerHTML = `<h2>${titre}</h2><p>${contenu}</p>`;
+
+      const btnSupprimer = document.createElement('button');
+      btnSupprimer.textContent = 'Supprimer';
+      btnSupprimer.className = 'supprimer-btn';
+      btnSupprimer.onclick = function () {
+        article.remove();
+      };
+
+      article.appendChild(btnSupprimer);
 
       document.querySelector('.add-section').before(article);
 

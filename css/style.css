@@ -52,12 +52,10 @@ nav a.active {
   gap: 40px;
 }
 
-.photo img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid white;
+.presentation .photo {
+    width: 300px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .texte {
