@@ -223,3 +223,45 @@ h1, h2 {
 .contact-info a:hover {
   text-decoration: underline;
 }
+/* === MENU BURGER === */
+#menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  margin: 10px 20px;
+}
+
+/* RESPONSIVE NAVIGATION */
+@media (max-width: 768px) {
+  /* Fè bouton burger la parèt sou ti ekran */
+  #menu-toggle {
+    display: block;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 10px 20px;
+    background-color: #3d0066;
+    display: none; /* pa montre meni a pa defo */
+  }
+
+  nav ul li {
+    width: 100%;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 10px 0;
+    width: 100%;
+    border-bottom: 1px solid #b366ff;
+  }
+
+  nav.active ul {
+    display: flex;
+  }
+}
