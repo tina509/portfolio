@@ -1,11 +1,100 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Citations Motivation Technologie</title>
-  <link rel="stylesheet" href="css/style.css">
+
   <style>
+    /* === STYLE GLOBAL === */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #2c003e;
+      color: white;
+      min-height: 100vh;
+    }
+
+    /* === HEADER & NAVIGATION === */
+    header {
+      background-color: #3d0066;
+      padding: 15px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 6px 12px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      display: block;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      background-color: #b366ff;
+      color: #2c003e;
+    }
+
+    /* Hamburger button - hidden on desktop */
+    #menu-toggle {
+      display: none;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      nav ul {
+        position: fixed;
+        top: 60px;
+        right: 0;
+        background-color: #3d0066;
+        width: 200px;
+        height: calc(100% - 60px);
+        flex-direction: column;
+        gap: 0;
+        padding-top: 20px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+      }
+
+      nav ul.active {
+        transform: translateX(0);
+      }
+
+      nav ul li {
+        margin-bottom: 20px;
+        padding-left: 20px;
+      }
+
+      #menu-toggle {
+        display: block;
+      }
+    }
+
+    /* === SECTION CITATIONS === */
     .citation-container {
       max-width: 800px;
       margin: 50px auto;
@@ -35,22 +124,21 @@
     }
 
     .supprimer-btn {
-  margin-left: 15px;
-  padding: 5px 10px;
-  background-color: #b366ff;
-  color: #2c003e;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
+      margin-left: 15px;
+      padding: 5px 10px;
+      background-color: #b366ff;
+      color: #2c003e;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
 
-.supprimer-btn:hover {
-  background-color: #9933ff;
-}
-
+    .supprimer-btn:hover {
+      background-color: #9933ff;
+    }
 
     h1 {
       color: #d9b3ff;
@@ -84,8 +172,9 @@
 <body>
 
 <header>
+  <button id="menu-toggle" aria-label="Ouvrir le menu">&#9776;</button>
   <nav>
-    <ul>
+    <ul id="main-nav">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="projets.html">Projets</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -100,41 +189,54 @@
 
   <div class="citation">
     <span>"Ce n'est pas parce que c'est difficile que nous n'osons pas, c'est parce que nous n'osons pas que c'est difficile." – Sénèque</span>
-    <!-- <button class="supprimer-btn" onclick="supprimer(this)">Supprimer</button> -->
   </div>
   <div class="citation">
     <span>"La technologie ne remplace jamais le travail acharné, elle le complète."</span>
-    <!-- <button class="supprimer-btn" onclick="supprimer(this)">Supprimer</button> -->
   </div>
   <div class="citation">
     <span>"Tout semble impossible jusqu'à ce que ce soit fait." – Nelson Mandela</span>
-    <!-- <button class="supprimer-btn" onclick="supprimer(this)">Supprimer</button> -->
   </div>
   <div class="citation">
     <span>"Si vous tombez sept fois, relevez-vous huit." – Proverbe japonais</span>
-    <!-- <button class="supprimer-btn" onclick="supprimer(this)">Supprimer</button> -->
   </div>
   <div class="citation">
     <span>"Les plus grands développeurs ont été des débutants un jour. Continuez d'apprendre."</span>
-    <!-- <button class="supprimer-btn" onclick="supprimer(this)">Supprimer</button> -->
   </div>
   <div class="citation">
     <span>"N'abandonnez jamais. Le code qui ne fonctionne pas aujourd'hui vous apprendra quelque chose demain."</span>
-    <!-- <button class="supprimer-btn" onclick="supprimer(this)">Supprimer</button> -->
   </div>
 
-  <!-- <div class="add-section">
+  <!--
+  <div class="add-section">
     <input type="text" id="newCitation" placeholder="Écris ta citation ici...">
     <button onclick="ajouterCitation()">Ajouter</button>
   </div>
+  -->
 
-</section> -->
+</section>
 
 <footer>
   <p>&copy; 2025 - Mon Portfolio</p>
 </footer>
 
-<!-- <script>
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('main-nav');
+
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+  });
+
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (nav.classList.contains('active')) {
+        nav.classList.remove('active');
+      }
+    });
+  });
+
+  /*
+  // Si ou vle ajoute fonctionnalités pou ajoute/supprimer citations, ou ka dekomante sa a:
   function supprimer(button) {
     button.parentElement.remove();
   }
@@ -165,7 +267,8 @@
       alert('Veuillez entrer une citation.');
     }
   }
-</script> -->
+  */
+</script>
 
 </body>
 </html>
