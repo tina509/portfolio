@@ -1,60 +1,69 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mon Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-    <header>
-       <nav>
-  <ul>
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="projets.html">Projets</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="blog.html">Blog</a></li>
+  <header>
+  <button id="menu-toggle">&#9776;</button> <!-- Bouton hamburger -->
+  <nav id="menu">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+  </nav>
+</header>
 
-  </ul>
-</nav>
-    </header>
 
-    <section class="presentation">
-        <img src="image/im.png" alt="Photo de Paul Aquina" class="photo">
-        <div class="texte">
-            
-            <h1>Salut, je suis <span class="nom">PAUL Aquina</span></h1>
-            <p>Je suis passionné par le développement web, la création graphique et les réseaux. J'aime apprendre et relever de nouveaux défis techniques.</p>
-            
-            <h2>Compétences :</h2>
-            <ul>
-                <li>HTML / CSS</li>
-                <li>JavaScript</li>
-                <li>Photoshop</li>
-                <li>Réseaux & Base de données</li>
-                <li>Python</li>
-            </ul>
+  <section class="presentation">
+    <img src="image/im.png" alt="Photo de Paul Aquina" class="photo" />
+    <div class="texte">
+      <h1>Salut, je suis <span class="nom">PAUL Aquina</span></h1>
+      <p>
+        Je suis passionné par le développement web, la création graphique et les réseaux. J'aime apprendre et relever de nouveaux défis techniques.
+      </p>
 
-            <h2>Résumé :</h2>
-            
-<p>
-Développeur web débutant et autodidacte, je m'intéresse aux technologies du web, au design graphique et aux bases de données. 
-Je possède des connaissances solides en HTML, CSS, et je m'initie progressivement à JavaScript et Python.
-<br><br>
-Je suis également passionné par la conception graphique, ce qui me permet de soigner l'apparence de mes projets avec des outils comme Photoshop.
-<br><br>
-Ayant des notions en réseaux et en base de données, je comprends l'importance de la sécurité et de la structure dans un projet informatique.
-<br><br>
-Motivé, rigoureux et curieux, je suis constamment en quête de nouvelles connaissances et de projets concrets pour mettre mes compétences en pratique et progresser dans le domaine du développement web.
-</p>
+      <h2>Compétences :</h2>
+      <ul>
+        <li>HTML / CSS</li>
+        <li>JavaScript</li>
+        <li>Photoshop</li>
+        <li>Réseaux & Base de données</li>
+        <li>Python</li>
+      </ul>
 
-        </div>
-    </section>
+      <h2>Résumé :</h2>
+      <p>
+        Développeur web débutant et autodidacte, je m'intéresse aux technologies du web, au design graphique et aux bases de données.
+        Je possède des connaissances solides en HTML, CSS, et je m'initie progressivement à JavaScript et Python.
+        <br /><br />
+        Je suis également passionné par la conception graphique, ce qui me permet de soigner l'apparence de mes projets avec des outils comme Photoshop.
+        <br /><br />
+        Ayant des notions en réseaux et en base de données, je comprends l'importance de la sécurité et de la structure dans un projet informatique.
+        <br /><br />
+        Motivé, rigoureux et curieux, je suis constamment en quête de nouvelles connaissances et de projets concrets pour mettre mes compétences en pratique et progresser dans le domaine du développement web.
+      </p>
+    </div>
+  </section>
 
-    <footer>
-        <p>&copy; 2025 - Mon Portfolio</p>
-    </footer>
+  <footer>
+    <p>&copy; 2025 - Mon Portfolio</p>
+  </footer>
+
+  <script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('active');
+  });
+</script>
 
 </body>
 </html>
